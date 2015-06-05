@@ -1,0 +1,24 @@
+<form id="commentForm" action="webservices/comment.php" method="POST">
+	<input placeholder="Nom" name="name"><br>
+	<input placeholder="Email" name="mail"><br>
+	<input placeholder="Site" name="web"><br>
+	<textarea placeholder="Votre commentaire" name="comment" rows="5" cols="60"></textarea><br>
+	<input type="submit">
+</form>
+<script>
+$(document).ready(function() {
+	$('<input>').attr({
+    type: 'hidden',
+    name: 'ajaxRequest',
+    value: true
+	}).appendTo('#commentForm');
+});
+$("#commentForm").submit(function(e){
+  e.preventDefault();
+	result = $.post('webservices/comment.php',$(this).serialize());
+	result.done(function( data ) {
+		$("#commentsList").prepend(data);
+		$("#commentForm")[0].reset();
+	});
+});
+</script>
