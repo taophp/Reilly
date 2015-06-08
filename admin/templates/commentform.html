@@ -6,12 +6,14 @@
 	<input type="submit">
 </form>
 <script>
-$("#commentForm").submit(function(e){
-  e.preventDefault();
-	result = $.post('webservices/comment.php?ajaxRequest=1',$(this).serialize());
-	result.done(function( data ) {
-		$("#commentsList").prepend(data);
-		$("#commentForm")[0].reset();
+$(document).ready(function() {
+	$("#commentForm").submit(function(e){
+		e.preventDefault();
+		result = $.post('webservices/comment.php',$(this).serialize());
+		result.done(function( data ) {
+			$("#commentsList").prepend(data);
+			$("#commentForm")[0].reset();
+		});
 	});
 });
 </script>
