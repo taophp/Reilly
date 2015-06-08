@@ -6,16 +6,9 @@
 	<input type="submit">
 </form>
 <script>
-$(document).ready(function() {
-	$('<input>').attr({
-    type: 'hidden',
-    name: 'ajaxRequest',
-    value: true
-	}).appendTo('#commentForm');
-});
 $("#commentForm").submit(function(e){
   e.preventDefault();
-	result = $.post('webservices/comment.php',$(this).serialize());
+	result = $.post('webservices/comment.php?ajaxRequest=1',$(this).serialize());
 	result.done(function( data ) {
 		$("#commentsList").prepend(data);
 		$("#commentForm")[0].reset();

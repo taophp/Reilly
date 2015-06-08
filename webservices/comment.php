@@ -17,7 +17,7 @@ foreach ($expectedInputs as $input){
 }
 file_put_contents($page,parseTemplate($data,$pageContent));
 
-if ($_POST['ajaxRequest']){
+if ($_GET['ajaxRequest']){
 	echo parseTemplate($data,'../admin/templates/comment.html');
 }else{
 	header('Location: '.$_SERVER["HTTP_REFERER"]);
