@@ -82,6 +82,7 @@ if ($imageFiles){
 	foreach ($imageFiles as $imageFile){
 		$url = substr(realpath($imageFile),strlen($_SERVER['DOCUMENT_ROOT']));
 		print '<img src="'.getResized($imageFile,$thumbWidth,$thumbHeight).'" onclick="javascript:c=parent.document.getElementById(\'content\');c.value+=\'![texte]('.$url.')\';c.focus();">';
+		print '<button onclick="javascript:c=parent.document.getElementById(\'titlepic\');c.value=\''.$url.'\';">Utiliser comme image de titre</button>';
 	}
 }
 
