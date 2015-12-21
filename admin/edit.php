@@ -40,9 +40,9 @@ printHeader($page,$errMsg);
 		<form method="POST">
 			<label for="title">Titre de l'article</label> <input id="title" name="title" <?php if ($metaData['title']) echo 'value="'.$metaData['title'].'"';?>><br>
 			<label for="postdate">Date de l'article</label> <input type="date" name="postdate" id="postdate" placeholder="YYYY-mm-dd" value="<?php echo array_key_exists('postdate',$meta)?$meta['postdate']:date('Y-m-d');?>"><br>
-			<label for="description">En-tête (sans retour à la ligne)</label><br>
 			<label for="picture">Image de titre (url)</label>
 			<input name="titlepic" id="titlepic"><br>
+			<label for="description">En-tête (sans retour à la ligne)</label><br>
 			<textarea id="description" name="description" rows="5" cols="60"><?php if ($description) echo $description;?></textarea><br>
 			<label for="content">Contenu (<a href="http://fr.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a> autorisé)</label><br>
 			<textarea id="content" name="content" rows="25" cols="60"><?php if ($content) echo $content;?></textarea>
