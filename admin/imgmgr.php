@@ -81,7 +81,10 @@ if ($imageFiles){
 	$thumbHeight = getFromConfig('thumbheight');
 	foreach ($imageFiles as $imageFile){
 		$url = substr(realpath($imageFile),strlen($_SERVER['DOCUMENT_ROOT']));
-		print '<img src="'.getResized($imageFile,$thumbWidth,$thumbHeight).'" onclick="javascript:c=parent.document.getElementById(\'content\');c.value+=\'![texte]('.$url.')\';c.focus();">';
+	//on prend qu'une partie de $url pour le nom de l'image -> attribul alt
+$name1 = explode("/",$url);
+$name2 = explode(".",$name1[5]);
+	print '<img src="'.getResized($imageFile,$thumbWidth,$thumbHeight).'" onclick="javascript:c=parent.document.getElementById(\'content\');c.value+=\'[!['.$name2[0].']('.$url.')]('.$url.')\';c.focus();">';
 		print '<button onclick="javascript:c=parent.document.getElementById(\'titlepic\');c.value=\''.$url.'\';">Utiliser comme image de titre</button>';
 	}
 }
